@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 生活与云端的交集</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f3f5;
+            color: #2c3035;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* hero 横幅卡片 */
+        .hero {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 3.5rem 2.5rem 3rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.04);
+            border: 1px solid #e9eaed;
+            transition: box-shadow 0.2s;
+        }
+        .hero:hover {
+            box-shadow: 0 10px 28px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #1a1c20;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            font-weight: 350;
+            color: #6b7280;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #56606e;
+            max-width: 600px;
+            margin: 0.25rem 0 1.2rem;
+            border-left: 4px solid #cbd5e1;
+            padding-left: 1.25rem;
+        }
+        .hero .meta {
+            display: flex;
+            gap: 1.2rem 2rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: #56606e;
+            padding-top: 0.4rem;
+            border-top: 1px solid #eef0f2;
+            margin-top: 0.2rem;
+        }
+        .meta i { font-style: normal; background: #f0f2f5; padding: 0.2rem 0.8rem; border-radius: 40px; }
+
+        /* 卡片网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (min-width: 700px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem 2.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.03);
+            border: 1px solid #e8eaed;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.85rem;
+            color: #1e2127;
+            letter-spacing: -0.01em;
+            border-bottom: 2px solid #f2f4f7;
+            padding-bottom: 0.6rem;
+        }
+        .card h2 small {
+            font-size: 0.9rem;
+            font-weight: 380;
+            color: #768394;
+            margin-left: 0.5rem;
+        }
+        .card p {
+            margin-bottom: 1rem;
+            color: #3a414c;
+        }
+        .card p:last-child { margin-bottom: 0; }
+        .card .tag {
+            display: inline-block;
+            background: #f4f6f9;
+            color: #3a4a5c;
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            margin-right: 0.4rem;
+            margin-bottom: 0.3rem;
+            border: 1px solid #e4e6eb;
+        }
+
+        /* 宽卡片 */
+        .wide-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem 2.3rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e8eaed;
+        }
+        .wide-card h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #1e2127;
+        }
+        .wide-card p {
+            margin-bottom: 0.9rem;
+            color: #3a414c;
+        }
+        .faq-item {
+            margin: 1rem 0 1rem 0;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #1f272f;
+            margin-bottom: 0.15rem;
+        }
+        .faq-a {
+            color: #4c5563;
+            padding-left: 0.2rem;
+            border-left: 2px solid #dce1e8;
+            padding-left: 1rem;
+        }
+
+        /* 页尾 */
+        .footer-note {
+            text-align: center;
+            padding: 2.2rem 1rem 1.2rem;
+            border-top: 1px solid #dee2e8;
+            margin-top: 1rem;
+            color: #5a6372;
+            font-size: 0.95rem;
+        }
+        .footer-note a {
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 460;
+            border-bottom: 1px solid #b9c0cb;
+            transition: border-color 0.2s;
+        }
+        .footer-note a:hover {
+            border-bottom-color: #1f2937;
+        }
+        .footer-note .small {
+            display: block;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: #707a88;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e3e6eb;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        /* 响应式小调整 */
+        @media (max-width: 500px) {
+            .hero { padding: 2rem 1.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .card, .wide-card { padding: 1.6rem 1.5rem; }
+            .grid { gap: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+        <h1>开云 <span>· 日常的延伸</span></h1>
+        <div class="sub">
+            云不只存在天上，也落在生活每一处需要安放与连接的地方。
+        </div>
+        <div class="meta">
+            <span>⌛ 阅读约 4 分钟</span>
+            <span><i># 生活向</i> <i># 轻专题</i></span>
+        </div>
+    </div>
+
+    <!-- 两列卡片：背景说明 + 第一个自然段落 -->
+    <div class="grid">
+        <div class="card">
+            <h2>一片云的背景 <small>· 从何说起</small></h2>
+            <p>我们总在寻找一种轻巧的方式，去存放那些零散的灵感、待办的计划，或者只是随手拍下的一张照片。开云想要提供的，正是这样一个没有负担的落脚点——它不承诺颠覆什么，只是安静地帮你整理数字生活里的边角料。</p>
+            <p>很多时候，工具越复杂，人越容易迷失。开云的思路是退一步：让界面回到卡片和留白，让操作藏在直觉背后。无论是记录一段文字，还是同步一个文件，都像翻一页笔记本那样自然。</p>
+            <span class="tag">轻盈</span>
+            <span class="tag">日常</span>
+        </div>
+
+        <div class="card">
+            <h2>三种使用场景 <small>· 也许你也遇到过</small></h2>
+            <p><strong>场景一：</strong> 通勤路上忽然想到一个选题，手机备忘录太零碎，笔记应用又太沉重。你打开开云，建一张轻卡片，一句话、一张图，到工位再慢慢整理。</p>
+            <p><strong>场景二：</strong> 周末想和家人共享旅行相册，不需要复杂的权限设置。开云生成一个临时分享夹，扫码即看，看过即散，没有多余的通知轰炸。</p>
+            <p><strong>场景三：</strong> 写了一半的文章草稿，在电脑与平板之间切换。开云的同步像水流一样安静，你几乎感觉不到它的存在，但文件永远在最新版本。</p>
+        </div>
+    </div>
+
+    <!-- 宽卡片：第三段自然介绍 + 引申 -->
+    <div class="wide-card">
+        <h2>不只是工具，也是一种姿态</h2>
+        <p>经过几年对数字工具的观察，我们发现那些真正被留下来的产品，往往不是功能最全的，而是最懂得「什么时候该安静」的那一个。开云在设计上选择了一种克制的语调：没有弹窗广告，没有冗余的社交按钮，甚至连默认字体都调低了对比度，只为让视线更舒服地停留。</p>
+        <p>当然，安静不意味着简陋。开云在后台整合了灵活的标签系统、轻量级的版本回溯，以及端到端的加密传输——这些特性被刻意隐藏起来，直到你需要的时候才出现。就像一间好厨房，好用的刀叉挂在顺手的地方，但不会在你聊天时硌到手。</p>
+        <p>很多人问，为什么要叫「开云」？答案可能很简单：云开见月明。在这个信息过载的时代，我们更需要一片能让自己透气的空白。开云希望成为那个帮你拨开杂乱、露出一点清晰视野的伙伴。</p>
+        <hr>
+        <p style="font-size:0.95rem; color:#566571;">如果你也认同这种温和的数字生活理念，不妨亲自感受一下 <a href="https://www.cloudkaiyunapp.com.cn" style="font-weight:500; color:#1f2937; text-decoration:none; border-bottom:1px solid #b5bdc9;">开云</a> 带来的日常变化。从一个小卡片开始，也许比你想象的更简单。</p>
+    </div>
+
+    <!-- FAQ 摘要卡片 -->
+    <div class="wide-card" style="margin-bottom:0.8rem;">
+        <h2>你可能想问</h2>
+        <div class="faq-item">
+            <div class="faq-q">▸ 开云需要付费吗？</div>
+            <div class="faq-a">基础功能免费，适合个人与轻量协作。未来会推出可选增值特性，但免费版已经足够覆盖大部分日常场景。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">▸ 我的数据安全吗？</div>
+            <div class="faq-a">传输和存储均采用行业标准加密，开云不会主动分析你的内容，隐私设计贯穿每个环节。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">▸ 可以在手机和电脑上同时用吗？</div>
+            <div class="faq-a">当然，开云支持主流浏览器及渐进式 Web 体验，登录同一账号即可无缝切换。</div>
+        </div>
+        <div style="margin-top:1.2rem; font-size:0.95rem; color:#4f5a6a;">
+            <span>还有疑问？直接访问 <a href="https://www.cloudkaiyunapp.com.cn" style="color:#1f2937; text-decoration:none; border-bottom:1px solid #b7bfca;">开云</a> 了解更多细节。</span>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <div>从日常的缝隙里，看见云的另一面。</div>
+        <span class="small">© 开云 · 保持轻盈</span>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mitcafens89.github.io/cloudkaiyunapp-com-cn/sitemap.xml
